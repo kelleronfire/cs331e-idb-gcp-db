@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head> </head>
+	<body>
+		<p>This is the albums page</b>
+		<a href="{{url_for('index')}}">Main Menu</a> <br/>
+		<h1>Albums</h1>
+		{% if album_list == [] %}
+			<p>No albums exist</p>	
+		{% else %}
+			{% for i in album_list %}
+				<div> 
+					{{i.album_name}}
+					<br/>
+                    {{i.album_id}}
+					<br/> <br/>
+				</div>
+			{% endfor %}
+		{% endif %}
+	</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head> </head>
+	<body>
+		<p>This is the tracks page</b>
+		<a href="{{url_for('index')}}">Main Menu</a> <br/>
+		<h1>Tracks</h1>
+		{% if track_list == [] %}
+			<p>No tracks exist</p>	
+		{% else %}
+			{% for i in track_list %}
+				<div> 
+					{{i.track_name}}
+					<br/>
+                    {{i.track_id}}
+					<br/> <br/>
+				</div>
+			{% endfor %}
+		{% endif %}
+	</body>
+</html>
