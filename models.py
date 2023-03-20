@@ -53,5 +53,4 @@ class Tracks(db.Model):
     tempo = db.Column(db.String(512), nullable = False)
     energy = db.Column(db.String(512), nullable = False)
 
-db.drop_all()
 db.create_all()
