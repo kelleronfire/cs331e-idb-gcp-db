@@ -11,7 +11,8 @@ password = '8778'
 ip_addr = 'localhost:5432'
 db_name = 'amplifydb'
 
-app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{username}:{password}@{ip_addr}/{db_name}'
+#app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{username}:{password}@{ip_addr}/{db_name}'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://postgres:8778@/postgres?host=/cloudsql/cs331e-idb-377817:us-central1:amplifydb'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy(app)
 
