@@ -26,16 +26,19 @@ def create_artists():
 
     for artist in artists:
         artist_id = artist['artist_id']
+        artist_image = artist['artist_image']
         artist_name = artist['artist_name']
         artist_popularity = artist['artist_popularity']
         followers = artist['followers']
         genres = artist['genres']
-        artist_image = artist['artist_image']
-        top_track = artist['top_track']
-        similar_artist = artist['similar_artist']
+        sample_album = artist['sample_album']
+        sample_album_id = artist['sample_album_id']
+        sample_track = artist['sample_track']
+        sample_track_id = artist['sample_track_id']
 		
         newArtist = Artists(artist_id = artist_id, artist_name = artist_name, artist_popularity = artist_popularity, followers = followers, 
-                            genres = genres, artist_image = artist_image, top_track = top_track, similar_artist = similar_artist)
+                            genres = genres, artist_image = artist_image, sample_album = sample_album, sample_album_id = sample_album_id, 
+                            sample_track = sample_track, sample_track_id = sample_track_id)
         
         # add new Artist object to DB
         db.session.add(newArtist)
@@ -54,18 +57,20 @@ def create_albums():
     albums = load_json('Albums.json')
 
     for album in albums:
-        album_id = album['album_id']
-        album_name = album['album_name']
         album_artist = album['album_artist']
-        release_date = album['release_date']
-        total_tracks = album['total_tracks']
+        album_artist_id = album['album_artist_id']
+        album_id = album['album_id']
         album_image = album['album_image']
+        album_name = album['album_name']
         album_popularity = album['album_popularity']
         label = album['label']
-        tracks = album['tracks']
+        release_date = album['release_date']
+        top_track = album['top_track']
+        total_tracks = album['total_tracks']
+        top_track_id = album['track_id']
 		
-        newAlbum = Albums(album_id = album_id, album_name = album_name, album_artist = album_artist, release_date = release_date, 
-                            total_tracks = total_tracks, album_image = album_image, album_popularity = album_popularity, label = label, tracks = tracks)
+        newAlbum = Albums(album_artist = album_artist, album_artist_id = album_artist_id, album_id = album_id, album_image = album_image, album_name = album_name,
+                          album_popularity = album_popularity, label = label, release_date = release_date, top_track = top_track, total_tracks = total_tracks, top_track_id = top_track_id)
         
         # add new Album object to DB
         db.session.add(newAlbum)
@@ -86,7 +91,8 @@ def create_tracks():
     for track in tracks:
         track_id = track['track_id']
         track_name = track['track_name']
-        track_artists = track['track_artists']
+        track_artist = track['track_artist']
+        track_artist_id = track['track_artist_id']
         track_popularity = track['track_popularity']
         track_image = track['track_image']
         preview_url = track['preview_url']
@@ -96,7 +102,7 @@ def create_tracks():
         energy = track['energy']
 
 		
-        newTrack = Tracks(track_id = track_id, track_name = track_name, track_artists = track_artists, track_popularity = track_popularity, 
+        newTrack = Tracks(track_id = track_id, track_name = track_name, track_artist = track_artist, track_artist_id = track_artist_id, track_popularity = track_popularity, 
                           track_image = track_image, preview_url = preview_url, danceability = danceability, loudness = loudness, tempo = tempo,
                           energy = energy)
         

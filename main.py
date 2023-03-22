@@ -35,4 +35,4 @@ def tracks():
 # debug=True activates the automatic reloader. Therefore, if you use it, make sure to add "db.drop_all()"
 # right before "db.create_all()" in "models.py".
 if __name__ == "__main__":
-	app.run(debug=False)
+	app.run(debug=True)
