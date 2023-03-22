@@ -7,12 +7,12 @@ app = Flask(__name__)
 
 # Database Info
 username = 'postgres'
-password = '8778'
+password = 'password'
 ip_addr = 'localhost:5432'
 db_name = 'amplifydb'
 
 #app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{username}:{password}@{ip_addr}/{db_name}'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://postgres:8778@/postgres?host=/cloudsql/cs331e-idb-377817:us-central1:amplifydb'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://postgres:password@/postgres?host=/cloudsql/cs331e-idb-377817:us-central1:amplifydb'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy(app)
 
@@ -54,4 +54,5 @@ class Tracks(db.Model):
     tempo = db.Column(db.String(512), nullable = False)
     energy = db.Column(db.String(512), nullable = False)
 
+db.drop_all()
 db.create_all()
