@@ -1,8 +1,9 @@
+# import modules and libraries
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import os
 
-
+# create a Flask app
 app = Flask(__name__)
 
 # Database Info
@@ -15,8 +16,11 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DB_STRING", f'postgresql
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy(app)
 
+# create a table for Artists
 class Artists(db.Model):
+    # initialize the table name
     __tablename__ = 'artists'
+    # declare the attributes and their types
     artist_id = db.Column(db.String(512), primary_key = True)
     artist_image = db.Column(db.String(512), nullable = False)
     artist_name = db.Column(db.String(512), nullable = False)
@@ -30,7 +34,9 @@ class Artists(db.Model):
 
 
 class Albums(db.Model):
+    # initialize the table name
     __tablename__ = 'albums'
+    # declare the attributes and their types
     album_artist = db.Column(db.String(512), nullable = False)
     album_artist_id = db.Column(db.String(512), nullable = False)
     album_id = db.Column(db.String(512), primary_key = True)
@@ -45,7 +51,9 @@ class Albums(db.Model):
 
 
 class Tracks(db.Model):
+    # initialize the table name
     __tablename__ = 'tracks'
+    # declare the attributes and their types
     danceability = db.Column(db.String(512), nullable = False)
     energy = db.Column(db.String(512), nullable = False)
     loudness = db.Column(db.String(512), nullable = False)
